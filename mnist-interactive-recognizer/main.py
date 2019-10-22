@@ -12,10 +12,10 @@ mnist_im_shape = (28, 28)
 input_size = mnist_im_shape[0]*mnist_im_shape[1]
 
 # hyperparameters
-layer_sizes = [input_size, 600, 10]
-num_epochs = 5
+layer_sizes = [input_size, 1000, 100, 10]
+num_epochs = 6
 batch_size = 200
-learning_rate = 0.0002
+learning_rate = 0.001
 
 train_dataset = torchvision.datasets.MNIST(root='../../data',
                                            train=True,
@@ -36,8 +36,10 @@ test_loader = torch.utils.data.DataLoader(dataset=test_dataset,
 
 model = nn.Sequential(
         nn.Linear(layer_sizes[0], layer_sizes[1]),
-        nn.ReLU(),
+        nn.Tanh(),
         nn.Linear(layer_sizes[1], layer_sizes[2]),
+        nn.ReLU(),
+        nn.Linear(layer_sizes[2], layer_sizes[3]),
         )
 
 def train(model):
