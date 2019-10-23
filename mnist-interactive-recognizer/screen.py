@@ -6,8 +6,10 @@ class DrawingScreen:
     BLACK = (0, 0, 0)
     MNIST_IM_DIMS = (28, 28)
 
-    def __init__(self, screen_dimensions_scale, brush_radius = 10):
-        dims = (28*screen_dimensions_scale, 28*screen_dimensions_scale)
+    def __init__(self, screen_dimensions_scale, brush_radius = 10, scaled_down_dimentions = MNIST_IM_DIMS):
+        w, h = scaled_down_dimentions
+        dims = (w*screen_dimensions_scale, h*screen_dimensions_scale)
+        self.scaled_down_dimentions = scaled_down_dimentions
         self.screen = pygame.display.set_mode(dims)
         self.__scale = screen_dimensions_scale
         self.__radius = brush_radius
@@ -65,7 +67,20 @@ class DrawingScreen:
     def downscale(self):
             scr2d = np.matrix(pygame.surfarray.array2d(self.screen))
             grayscale = np.array(DrawingScreen.dec_to_grayscale(scr2d))
-            transition_shape = (self.MNIST_IM_DIMS[0], self.__scale, self.MNIST_IM_DIMS[1], self.__scale)
+            transition_shape = (self.scaled_down_dimentions[0], self.__scale, self.scaled_down_dimentions[1], self.__scale)
             downscaled = grayscale.reshape(transition_shape).mean(-1).mean(1)
             normalized = downscaled/255
             return normalized.transpose()
+
+
+if __name__ == '__main__':
+    # show whaole array when printing
+    np.set_printoptions(threshold=np.inf)
+
+    scale = 30
+    brush_radius = 15
+    scaled_down_dims = (10, 10)
+
+    # print downscaled matrix on MOUSEBUTTONUP
+    ds = DrawingScreen(scale, brush_radius, scaled_down_dims)
+    ds.mainloop(lambda scr: print(scr))

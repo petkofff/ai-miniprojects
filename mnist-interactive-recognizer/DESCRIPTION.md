@@ -2,10 +2,10 @@
 
 `main.py` will:
 
-1) download the MNIST database
-2) train and test a feed forward network
-3) open a drawing window
-4) try to recognize the number that the user has written:
+1. download the MNIST database
+2. train and test a feed forward network
+3. open a drawing window
+4. try to recognize the number that the user has written:
 
 ![mnist-interactive](../assets/mnist-interactive.gif "mnist-interactive")
 
