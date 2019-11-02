@@ -74,7 +74,7 @@ class DrawingScreen:
 
 
 if __name__ == '__main__':
-    # show whaole array when printing
+    # show whole array when printing
     np.set_printoptions(threshold=np.inf)
 
     scale = 30

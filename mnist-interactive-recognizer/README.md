@@ -3,7 +3,7 @@
 `main.py` will:
 
 1. download the MNIST database
-2. train and test a feed forward network
+2. train and test a [CNN](http://ufldl.stanford.edu/tutorial/supervised/ConvolutionalNeuralNetwork/) or a fully connected network
 3. open a drawing window
 4. try to recognize the number that the user has written:
 
@@ -18,5 +18,5 @@
 
 ## To Do:
 
-* CNN
-* save and load trained model
+ * ~~CNN~~
+ * save and load trained model
