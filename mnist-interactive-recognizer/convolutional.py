@@ -38,7 +38,7 @@ class Convolutional(nn.Module):
         self.relu = nn.ReLU()
 
     def forward(self, x):
-        x = x.reshape(1, 1, self.MNIST_IM_SHAPE[0], self.MNIST_IM_SHAPE[1])
+        x = x.reshape(-1, 1, self.MNIST_IM_SHAPE[0], self.MNIST_IM_SHAPE[1])
 
         x = self.conv1(x)
         x = self.max_pool(x)

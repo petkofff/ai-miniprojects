@@ -3,9 +3,9 @@ import torch
 import torch.nn as nn
 import torchvision
 import torchvision.transforms as transforms
-from fully_connected import *
-from convolutional import *
-from screen import *
+from fully_connected import FullyConnected
+from convolutional import Convolutional
+from screen import DrawingScreen
 
 batch_size = 300
 
